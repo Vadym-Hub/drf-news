@@ -9,6 +9,8 @@ djangorestframework = "==3.12.4"
 psycopg2-binary = "==2.8.6"
 drf-yasg = "*"
 djoser = "==2.0.3"
+celery = "==5.0.5"
+redis = "==3.5.3"
 
 [dev-packages]
 black = "==19.10b0"

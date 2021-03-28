@@ -5,7 +5,7 @@ from .models import Post, Comment
 
 class RecursiveSerializer(serializers.Serializer):
     """
-    Serializer for recursive output children in comments.
+    Serializer for recursive output comments in comments.
     """
 
     def to_representation(self, value):
