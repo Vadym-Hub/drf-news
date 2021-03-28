@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+
+import dj_database_url
 from celery.schedules import crontab
 
 
@@ -12,20 +14,21 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get("DEBUG", default=0)))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
-    # Local
+    # Local.
     "posts.apps.PostsConfig",
+    # Base.
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Third-party
+    # Third-party.
     "rest_framework",  # For API.
     "rest_framework.authtoken",
     "djoser",  # For user registration and authentication endpoints.
@@ -34,6 +37,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -76,6 +80,9 @@ DATABASES = {
         "PORT": os.getenv("POSTGRES_PORT"),
     }
 }
+
+db = dj_database_url.config()
+DATABASES['default'].update(db)
 
 
 AUTH_PASSWORD_VALIDATORS = [

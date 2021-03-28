@@ -21,7 +21,7 @@ router.register("comments", views.CommentViewSet)
 
 urlpatterns = [
     path(
-        "swagger(?P<format>\.json|\.yaml)",
+        "swagger(<format>\.json|\.yaml)",
         schema_view.without_ui(cache_timeout=0),
         name="schema-json",
     ),

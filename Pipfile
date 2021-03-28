@@ -11,6 +11,9 @@ drf-yasg = "*"
 djoser = "==2.0.3"
 celery = "==5.0.5"
 redis = "==3.5.3"
+gunicorn = "*"
+whitenoise = "*"
+dj-database-url = "*"
 
 [dev-packages]
 black = "==19.10b0"
