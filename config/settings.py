@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
-
+# SECRET_KEY = 'ubrx8+90dhe4#%p#59j!-f-tf=o^c^qhpx^@@yp#v@(xj)1b!!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get("DEBUG", default=0)))
 
@@ -81,6 +81,13 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 db = dj_database_url.config()
 DATABASES['default'].update(db)
 
@@ -113,11 +120,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "static"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+#
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
 
 
 # REST DRF settings.
