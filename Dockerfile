@@ -13,6 +13,3 @@ RUN pip install pipenv && pipenv install --system
 
 # Copy project
 COPY . /code/
-
-# RUN adduser -D user
-# USER user
